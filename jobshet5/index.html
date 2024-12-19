@@ -1,0 +1,67 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Mini</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded shadow-md w-full max-w-md">
+        <h1 class="text-2xl font-bold mb-6 text-center">Kalkulator Mini</h1>
+        <form id="calculator" class="space-y-4">
+            <div class="flex items-center">
+                <label for="nilai1" class="w-1/3 font-bold">Nilai 1</label>
+                <span class="mr-2">:</span>
+                <input type="number" id="nilai1" class="border border-gray-400 p-2 w-full">
+            </div>
+            <div class="flex items-center">
+                <label for="nilai2" class="w-1/3 font-bold">Nilai 2</label>
+                <span class="mr-2">:</span>
+                <input type="number" id="nilai2" class="border border-gray-400 p-2 w-full">
+            </div>
+            <div class="flex items-center">
+                <label for="hasil" class="w-1/3 font-bold">Hasil</label>
+                <span class="mr-2">:</span>
+                <input type="text" id="hasil" class="border border-gray-400 p-2 w-full" readonly>
+            </div>
+            <div class="flex space-x-2 justify-center mt-4">
+                <button type="button" class="bg-gray-200 p-2 border border-gray-400" onclick="calculate('+')">+</button>
+                <button type="button" class="bg-gray-200 p-2 border border-gray-400" onclick="calculate('-')">-</button>
+                <button type="button" class="bg-gray-200 p-2 border border-gray-400" onclick="calculate('*')">x</button>
+                <button type="button" class="bg-gray-200 p-2 border border-gray-400" onclick="calculate('/')">/</button>
+                <button type="reset" class="bg-gray-200 p-2 border border-gray-400">Reset</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function calculate(operation) {
+            const nilai1 = parseFloat(document.getElementById('nilai1').value);
+            const nilai2 = parseFloat(document.getElementById('nilai2').value);
+            let hasil = 0;
+
+            if (isNaN(nilai1) || isNaN(nilai2)) {
+                alert('Please enter valid numbers');
+                return;
+            }
+
+            switch (operation) {
+                case '+':
+                    hasil = nilai1 + nilai2;
+                    break;
+                case '-':
+                    hasil = nilai1 - nilai2;
+                    break;
+                case '*':
+                    hasil = nilai1 * nilai2;
+                    break;
+                case '/':
+                    hasil = nilai1 / nilai2;
+                    break;
+            }
+
+            document.getElementById('hasil').value = hasil;
+        }
+    </script>
+</body>
+</html>
